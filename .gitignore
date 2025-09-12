@@ -1,0 +1,18 @@
+# Dependencies
+/node_modules
+/front-end/node_modules
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Build artifacts
+/build
+/dist
+
+# Other
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

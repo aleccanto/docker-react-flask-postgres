@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Serviço do back-end (Python/Flask)
+  back-end:
+    build: ./back-end
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./back-end:/app
+    depends_on:
+      - db
+
+  # Serviço do front-end (React)
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front-end:/app
+      - /app/node_modules
+    depends_on:
+      - back-end
+
+  # Serviço do banco de dados (PostgreSQL)
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
