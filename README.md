@@ -13,13 +13,12 @@ Este projeto demonstra uma aplicação web básica utilizando React para o front
 ├── front-end/
 │   ├── Dockerfile
 │   ├── package.json
-│   ├── public/
-│   │   └── index.html
+│   ├── vite.config.js
+│   ├── index.html
 │   └── src/
-│       ├── App.css
-│       ├── App.js
-│       ├── index.css
-│       └── index.js
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── index.css
 ├── docker-compose.yml
 └── README.md
 ```
