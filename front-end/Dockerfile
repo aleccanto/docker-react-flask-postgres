@@ -1,11 +1,11 @@
 # Use uma imagem oficial do Node.js como imagem pai
-FROM node:16
+FROM node:20
 
 # Define o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copia package.json e package-lock.json
-COPY package*.json ./
+# Copia o package.json
+COPY package.json ./
 
 # Instala as dependências
 RUN npm install
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Executa a aplicação quando o contêiner é iniciado
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

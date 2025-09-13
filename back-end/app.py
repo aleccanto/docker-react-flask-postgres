@@ -1,8 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 import os
 import psycopg2
 
 app = Flask(__name__)
+CORS(app)
 
 def get_db_connection():
     conn = psycopg2.connect(
