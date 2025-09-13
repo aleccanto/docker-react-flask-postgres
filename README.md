@@ -99,8 +99,6 @@ Este arquivo descreve os serviços, redes e volumes da aplicação.
 **Nosso `docker-compose.yml`:**
 
 ```yaml
-version: '3.8'
-
 services:
   back-end:
     build: ./back-end
@@ -116,10 +114,10 @@ services:
       context: ./front-end
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:5173" # Mapeia a porta do host para a porta do Vite
     volumes:
       - ./front-end:/app
-      - /app/node_modules
+      - /app/node_modules # Isola o node_modules para evitar conflitos
     depends_on:
       - back-end
 
@@ -159,6 +157,11 @@ volumes:
 
     ```bash
     docker-compose down
+    ```
+
+    - Para uma limpeza completa que também remove os volumes (como o banco de dados), use:
+    ```bash
+    docker-compose down -v
     ```
 
 3.  **Listar os contêineres:**
